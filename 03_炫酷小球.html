@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Canvas学习</title>
+		<style type="text/css">
+			canvas{
+				border:1px solid gray;
+			}
+		</style>
+	</head>
+	<body>
+	<!--
+    	作者：zxliuzx@163.com
+    	时间：2018-12-11
+    	描述：canvas是一个标签，必须在标签里面设置宽高
+    -->
+		<canvas width="600" height="400" id="mycanvas"></canvas>
+		<script type="application/javascript">
+			var mycanvas=document.getElementById("mycanvas");
+			var ctx=mycanvas.getContext("2d");
+			
+			function Ball(x,y){
+				this.x=x;
+				this.y=y;
+				this.dx=1;
+				this.dy=1;
+				this.color="rgb("+parseInt(Math.random()*256)+","+parseInt(Math.random()*256)+","+parseInt(Math.random()*256)+")";
+				ballArr.push(this);
+				this.update=function(){
+					this.x=this.x+this.dx;
+					this.y=this.y+this.dy;
+				}
+				this.draw=function(){
+					ctx.beginPath();
+					ctx.arc(this.x,this.y,20,0,360/Math.PI,false);
+					ctx.closePath();
+					ctx.fillStyle=this.color;
+					ctx.fill();
+				}
+				
+			}
+			var ballArr=[];
+			
+			mycanvas.onmousemove=function(event){
+				new Ball(event.clientX,event.y);
+			}
+			setInterval(function(){
+				ctx.clearRect(0,0,mycanvas.clientWidth,mycanvas.clientHeight);
+				for(var i=0;i<ballArr.length;i++){
+					var ball=ballArr[i];
+					ball.update();
+					ball.draw();
+				}
+				
+			},10);
+			
+		</script>
+	</body>
+</html>

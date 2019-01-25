@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Canvas学习</title>
+		<style type="text/css">
+			canvas{
+				border:1px solid gray;
+			}
+		</style>
+	</head>
+	<body>
+	<!--
+    	作者：zxliuzx@163.com
+    	时间：2018-12-11
+    	描述：canvas是一个标签，必须在标签里面设置宽高
+    -->
+		<canvas width="600" height="400" id="mycanvas"></canvas>
+		<script type="application/javascript">
+			var mycanvas=document.getElementById("mycanvas");
+			var ctx=mycanvas.getContext("2d");
+			ctx.fillRect(100,100,300,40);
+			
+			ctx.fillStyle="blue";
+			ctx.beginPath();
+			ctx.arc(300,300,100,0,Math.PI*2,true);
+			ctx.fill();
+			ctx.closePath();
+		</script>
+	</body>
+</html>

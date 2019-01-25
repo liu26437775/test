@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas学习</title>
+    <style type="text/css">
+        canvas {
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+<!--
+    作者：zxliuzx@163.com
+    时间：2018-12-11
+    描述：canvas是一个标签，必须在标签里面设置宽高
+-->
+<canvas width="1000" height="500" id="mycanvas"></canvas>
+<script type="text/javascript" src="js/ljtopo.js"></script>
+
+
+<script type="application/javascript">
+    var ljtopo = new LJTopo();
+    var board = ljtopo.createBoard("mycanvas");
+    var node0 = board.createNode("[1]", 40, 40);
+    node0.type = "circle";
+    board.add(node0);
+    var node1 = board.createNode("[2]", 80, 40);
+    board.add(node1);
+    var node2 = board.createNode("[3]", 300, 200);
+    node2.imageUrl="img/1.png";
+    board.add(node2);
+
+    var node3 = board.createNode("[3]", 500, 200);
+    node3.imageUrl="img/1.png";
+    board.add(node3);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas学习</title>
+    <style type="text/css">
+        canvas{
+            border:1px solid gray;
+        }
+    </style>
+</head>
+<body>
+<!--
+    作者：zxliuzx@163.com
+    时间：2018-12-11
+    描述：canvas是一个标签，必须在标签里面设置宽高
+-->
+<canvas width="600" height="400" id="mycanvas"></canvas>
+<input type="button" value="移动到00" onclick="move00();">
+<input type="button" value="放大" onclick="moveOut();">
+<input type="button" value="旋转" onclick="rotate();">
+
+<script type="application/javascript">
+    var mycanvas=document.getElementById("mycanvas");
+    var ctx=mycanvas.getContext("2d");
+    ctx.strokeRect(0,0,20,20);
+    ctx.strokeRect(50,50,50,50);
+    ctx.strokeRect(-50,-50,50,50);
+    ctx.strokeRect(0,0,600,400);
+    function move00(){
+        ctx.clearRect(0,0,600,400);
+        ctx.translate(100,100);//+数表示右下移动
+        ctx.strokeRect(0,0,600,400);
+        ctx.strokeRect(0,0,20,20);
+        ctx.strokeRect(50,50,50,50);
+        ctx.strokeRect(-50,-50,50,50);
+
+    }
+    function moveOut(){
+        ctx.translate(100,100);//+数表示右下移动
+        ctx.clearRect(-100,-100,600,400);
+        ctx.scale(2,2);
+        ctx.strokeRect(0,0,20,20);
+        ctx.strokeRect(0,0,600,400);
+        ctx.strokeRect(50,50,50,50);
+        ctx.strokeRect(-50,-50,50,50);
+    }
+    function moveIn(){
+        ctx.clearRect(-100,-100,600,400);
+        ctx.scale(1/2,1/2);
+        ctx.strokeRect(0,0,20,20);
+        ctx.strokeRect(0,0,600,400);
+        ctx.strokeRect(50,50,50,50);
+        ctx.strokeRect(-50,-50,50,50);
+    }
+    function rotate(){
+        ctx.clearRect(-100,-100,600,400);
+        ctx.rotate(1);
+        ctx.strokeRect(0,0,20,20);
+        ctx.strokeRect(0,0,600,400);
+        ctx.strokeRect(50,50,50,50);
+        ctx.strokeRect(-50,-50,50,50);
+    }
+
+
+</script>
+</body>
+</html>

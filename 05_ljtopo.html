@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Canvas学习</title>
+		<style type="text/css">
+			canvas {
+				border: 1px solid gray;
+			}
+		</style>
+	</head>
+
+	<body>
+	<div>
+		<input type="button" value="缩小" onclick="zoomIn();">
+		<input type="button" value="放大" onclick="zoomOut();">
+		<input type="button" value="居中" onclick="zoomCenter();">
+	</div>
+		<canvas width="1000" height="500" id="mycanvas"></canvas>
+		<script type="text/javascript" src="js/ljtopo.js"></script>
+
+
+		<script type="application/javascript">
+
+			var ljtopo = new LJTopo();
+			var board=ljtopo.createBoard("mycanvas");
+			var node0=board.createNode("[0,0]",0,0);
+			node0.width=50;
+			node0.height=50;
+			board.add(node0);
+
+			var node10 = board.createNode("[1]", 60, 40);
+			node10.type = "circle";
+			board.add(node10);
+			var nodec=board.createNode("[中心节点]",500-15,250-15);
+			nodec.strokeStyle="red";
+			nodec.strokeWidth=2;
+			board.add(nodec);
+
+			var node2 = board.createNode("[3]", 300, 200);
+			node2.imageUrl="img/1.png";
+			board.add(node2);
+
+			var node3 = board.createNode("[4]", 500, 200);
+			node3.imageUrl="img/1.png";
+			board.add(node3);
+
+
+			var nodeS =board.createNode("开始节点", 100, 300);
+			var nodeE = board.createNode("结束节点", 300,300);
+			nodeE.type = "circle";
+			var line=board.createLink("连线名称连线名称",nodeS,nodeE);
+			line.type="arrowsLine";
+			board.add(line);
+			board.add(nodeE);
+			board.add(nodeS);
+
+			for(var i=0;i<0;i++){
+				var nodeS =board.createNode("开始节点", 1000*Math.random(), 500*Math.random());
+				var nodeE = board.createNode("结束节点", 1000*Math.random(), 500*Math.random());
+				var line=board.createLink("连线名称连线名称",nodeS,nodeE);
+				board.add(line);
+				board.add(nodeE);
+				board.add(nodeS);
+			}
+			function zoomIn(){
+				board.zoomIn();
+			}
+			function zoomOut(){
+				board.zoomOut();
+			}
+			function zoomCenter(){
+				board.center();
+			}
+ 		</script>
+	</body>
+
+</html>

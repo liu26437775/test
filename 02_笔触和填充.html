@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Canvas学习</title>
+		<style type="text/css">
+			canvas{
+				border:1px solid gray;
+			}
+		</style>
+	</head>
+	<body>
+	<!--
+    	作者：zxliuzx@163.com
+    	时间：2018-12-11
+    	描述：canvas是一个标签，必须在标签里面设置宽高
+    -->
+		<canvas width="600" height="400" id="mycanvas"></canvas>
+		<script type="application/javascript">
+			var mycanvas=document.getElementById("mycanvas");
+			var ctx=mycanvas.getContext("2d");
+			
+			//笔触
+//			ctx.strokeStyle="red";//笔触颜色
+//			ctx.strokeRect(100,100,300,40);//描边长方形
+
+			
+			//划线
+			ctx.beginPath();//开始绘制路径
+			ctx.moveTo(100,100);//移动到某点
+			ctx.lineTo(300,300);//绘线
+			ctx.lineTo(300,100);//绘线
+			ctx.closePath();//封闭路径
+			//上线两行是虚拟线，并没有实际画上
+			ctx.strokeStyle='aquamarine';//改变线的颜色
+			ctx.stroke();//划线
+			
+			ctx.fillStyle='rosybrown';//内部填充颜色
+			ctx.fill();//开始填充
+
+			
+		</script>
+	</body>
+</html>

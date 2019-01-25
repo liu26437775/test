@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Canvas学习</title>
+		<style type="text/css">
+			canvas {
+				border: 1px solid gray;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas width="1000" height="500" id="mycanvas"></canvas>
+		<script type="text/javascript" src="js/ljtopo.js"></script>
+		<br/>
+		<input type="button" value="缩小" onclick="zoomIn();">
+		<input type="button" value="放大" onclick="zoomOut();">
+		<input type="button" value="居中" onclick="zoomCenter();">
+		<script type="application/javascript">
+
+			var ljtopo = new LJTopo("mycanvas");
+
+			var nodeS = new Node("开始节点", 350*Math.random(), 350*Math.random());
+			ljtopo.add(nodeS);
+			var nodeE = new Node("结束节点", 350*Math.random(), 350*Math.random());
+			ljtopo.add(nodeE);
+
+			var line=new Line("连线名称连线名称",nodeS,nodeE);
+			ljtopo.add(line);
+
+			var nodeM = new Node("中心节点", 500-15, 250-15);
+			ljtopo.add(nodeM);
+
+			for(var i=0;i<3;i++){
+				var nodei = new Node("11111", i*40, i*40);
+				ljtopo.add(nodei);
+			}
+
+
+			var tool=new LJTopoUtils(ljtopo);
+
+			function zoomIn(){
+				tool.zoomIn();
+			}
+			function zoomOut(){
+				tool.zoomOut();
+			}
+			function zoomCenter(){
+				tool.center();
+			}
+		</script>
+	</body>
+
+</html>
